@@ -61,7 +61,7 @@ claude.ai にしか本文がない自作スキル（`astro-web` / `vite-react-we
 
 - **標準機能ファースト:** 仕組みを新設する前に「Claude Code 標準機能で可能か」を確認し、標準機構（skills / agents / hooks / permissions）で実現できるものを自作しない。対応表は [`model-routing.md`](skills/skill-foundry/references/model-routing.md)。
 - **2プロファイル設計:** スキルは Manager（判断系・Opus 実行）と Worker（手順系・Sonnet 5 サブエージェント実行）で書き分ける。テンプレートは [`skill-template.md`](skills/skill-foundry/references/skill-template.md) から選択。
-- **チェックポイント評価:** Worker 成果物は [`eval-rubric.md`](skills/skill-foundry/references/eval-rubric.md) の10軸で Opus が採点する（常時評価はしない）。
+- **完成度評価:** スキルは [`eval-rubric.md`](skills/skill-foundry/references/eval-rubric.md) の10軸で Opus が採点し、「配備可」（16点以上・0点なし）のものだけを配備する。採点はクリエイト完了時・アップデート後・棚卸し時のチェックポイントで行う。
 
 ## メンテナンス
 
