@@ -28,6 +28,9 @@
 
 ## McKinsey「Lilli」侵害（セクション1・3の事例）
 
+- 🟢 McKinsey 公式声明, "Statement on strengthening safeguards within the Lilli tool"
+  https://www.mckinsey.com/about-us/media/statement-on-strengthening-safeguards-within-the-lilli-tool
+  — 当事者による一次確認（2026-07-06 追記: skill-foundry ①リサーチで発見し 🟡→🟢 に格上げ）。
 - 🟡 BankInfoSecurity, "Autonomous Agent Hacked McKinsey's AI in 2 Hours"
   https://www.bankinfosecurity.com/autonomous-agent-hacked-mckinseys-ai-in-2-hours-a-31007
 - 🟡 NeuralTrust, "How an AI Agent Hacked McKinsey and Exposed 46 Million Messages"
