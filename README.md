@@ -45,7 +45,7 @@ python3 skills/skill-foundry/scripts/validate_skill.py <skill-dir> [...]
 
 このリポジトリが単一の正（source of truth）。配備は3経路:
 
-1. **PC の Claude Code**: `git clone` して `./install.sh` を実行（`skills/*` を `~/.claude/skills/` にシンボリックリンク。以後 `git pull` だけで更新反映）
+1. **PC の Claude Code**: `git clone` して `./install.sh` を実行（`skills/*` を `~/.claude/skills/` にシンボリックリンク。以後 `git pull` だけで更新反映）。Windows は Git Bash で実行し、事前に開発者モードを有効にする（スクリプトがネイティブシンボリックリンクを強制。コピーになると pull 反映が壊れるため）
 2. **claude.ai**: 各 `SKILL.md` を claude.ai > 設定 > 機能 > スキル にアップロード
 3. **プラグイン**: Claude Code で `/plugin marketplace add GHshimon/skills` → `ai-company-skills` をインストール（`.claude-plugin/` マニフェスト経由の1コマンド配布）
 
