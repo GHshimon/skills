@@ -26,6 +26,15 @@ Claude 向けの Agent Skills を管理するリポジトリ。
 | スキル | 概要 |
 | --- | --- |
 | [`ai-agent-architect`](ai-agent-architect/SKILL.md) | AIエージェント設計・プロンプト/コンテキストエンジニアリング・運用・失敗回避の知識ベース。CLAUDE.md レビューやモデルの性能を引き出す設計に使う。 |
+| [`skill-foundry`](skill-foundry/SKILL.md) | 専門エージェント用スキルを鍛造するメタスキル。①リサーチ→②クリエイト→③アップデート→④分割の4段階パイプラインと Sonnet 5 サブエージェント委任規則。AI Company のエージェント編成は [`references/agent-roster.md`](skill-foundry/references/agent-roster.md) 参照。 |
+
+## スキルの検証
+
+新規・更新スキルは必ず形式検証を通す:
+
+```bash
+python3 skill-foundry/scripts/validate_skill.py <skill-dir> [...]
+```
 
 ## メンテナンス
 
