@@ -11,7 +11,7 @@ import re
 import sys
 
 RESERVED = ("anthropic", "claude")
-WHEN_CUES = ("使用する", "使う", "とき", "Use when", "use this")
+WHEN_CUES = ("使用する", "使う", "とき", "参照", "際に", "Use when", "use this")
 
 
 def validate(skill_dir: str) -> list[str]:

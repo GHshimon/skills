@@ -1,7 +1,7 @@
 # SKILL.md テンプレート
 
 新規スキルはこのテンプレートを複製して埋める。`{{ }}` をすべて置換したら
-`python3 skill-foundry/scripts/validate_skill.py <skill-dir>` で検証する。
+`python3 skills/skill-foundry/scripts/validate_skill.py <skill-dir>`（リポジトリ直下から） で検証する。
 
 ```markdown
 ---

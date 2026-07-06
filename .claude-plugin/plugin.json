@@ -1,0 +1,8 @@
+{
+  "name": "ai-company-skills",
+  "description": "AI Company の専門エージェント用 Agent Skills バンドル（ai-agent-architect / dx-consult-agent / skill-foundry）。skills/ 配下のスキルを一括で配布する。",
+  "version": "0.1.0",
+  "author": {
+    "name": "GHshimon"
+  }
+}
