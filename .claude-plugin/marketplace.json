@@ -1,0 +1,13 @@
+{
+  "name": "ghshimon-skills",
+  "owner": {
+    "name": "GHshimon"
+  },
+  "plugins": [
+    {
+      "name": "ai-company-skills",
+      "source": "./",
+      "description": "AI Company の専門エージェント用 Agent Skills バンドル。skill-foundry パイプラインで鍛造・検証されたスキル群。"
+    }
+  ]
+}
