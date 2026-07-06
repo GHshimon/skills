@@ -57,6 +57,12 @@ claude.ai にしか本文がない自作スキル（`astro-web` / `vite-react-we
 2. `_incoming/<name>/SKILL.md` の「回収待ち」見出し以下を本文で置き換える
 3. `git mv _incoming/<name> skills/<name>` で配備対象に昇格（Hook が自動検証）
 
+## 設計原則
+
+- **標準機能ファースト:** 仕組みを新設する前に「Claude Code 標準機能で可能か」を確認し、標準機構（skills / agents / hooks / permissions）で実現できるものを自作しない。対応表は [`model-routing.md`](skills/skill-foundry/references/model-routing.md)。
+- **2プロファイル設計:** スキルは Manager（判断系・Opus 実行）と Worker（手順系・Sonnet 5 サブエージェント実行）で書き分ける。テンプレートは [`skill-template.md`](skills/skill-foundry/references/skill-template.md) から選択。
+- **チェックポイント評価:** Worker 成果物は [`eval-rubric.md`](skills/skill-foundry/references/eval-rubric.md) の10軸で Opus が採点する（常時評価はしない）。
+
 ## メンテナンス
 
 - スキルの棚卸し結果は [`DEBT_INVENTORY.md`](DEBT_INVENTORY.md) を参照。
