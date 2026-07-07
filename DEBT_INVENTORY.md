@@ -80,6 +80,19 @@
 - **事象:** `~/.claude/settings.json` も プロジェクト `.claude/settings.json` も無し。権限は既定のまま。
 - **推奨（任意）:** よく使う読み取り専用コマンドを許可リスト化すると権限プロンプトが減る（`/fewer-permission-prompts`）。小規模な現状では必須ではない。
 
+### 5.2 ✅ プラグインのスコープ整理（2026-07-07 対応）
+- **事象:** 13プラグインが全プロジェクトでグローバル有効。常駐 description を実測した結果、
+  vercel 単体で**約110KB**（スキル36個）＋毎セッションの SessionStart 注入フックがあり、
+  TouchDesigner 等の無関係なセッションのコンテキストを恒常的に圧迫していた。
+- **対応:** 実測データに基づき重い4つだけを降格（残り9個は各8KB未満で汎用性が高いため現状維持）:
+  - `vercel`（110KB）→ グローバル無効。Next.js の `プロフィールページ/site-nextjs` のみ project 有効
+  - `pr-review-toolkit`（10.7KB のエージェント定義6個）→ 無効（レビューは Opus 独立レビュー方式で代替済み）
+  - `plugin-dev`（6.9KB）→ 本リポジトリ（skills）のみ project 有効
+  - `mcp-server-dev`（1.4KB）→ 無効（MCP開発時に再有効化）
+- **効果:** 一般セッションの常駐プラグイン description が約133KB → 約14KB（**約9割削減**）。
+- **復元:** `~/.claude/backups/settings.json.pre-plugin-scope-20260707` にバックアップあり。
+  再有効化は対象プロジェクトの `.claude/settings.json` に `"enabledPlugins": {"<plugin>@<marketplace>": true}` を追記。
+
 ---
 
 ## 6. 対応済み / 残タスク
