@@ -24,6 +24,6 @@
 
 ## Microsoft Teams
 
-- 🟢 Microsoft, Office 365 コネクタ廃止（2026-05 無効化）と Workflows 移行 — https://devblogs.microsoft.com/microsoft365dev/retirement-of-office-365-connectors-within-microsoft-teams/
+- 🟢 Microsoft, Office 365 コネクタ廃止（移行期限 2026-04-30、無効化ロールアウト 2026-05-18〜22）と Workflows 移行 — https://devblogs.microsoft.com/microsoft365dev/retirement-of-office-365-connectors-within-microsoft-teams/ （2026-07-07 棚卸しで期日を精緻化）
 - 🟢 Microsoft, Power Automate での Adaptive Card 作成 — https://learn.microsoft.com/en-us/power-automate/create-adaptive-cards
 - 🟢 Microsoft, Workflows の MessageCard 受付状況（2025-12 時点） — https://learn.microsoft.com/en-us/answers/questions/5685899/status-of-legacy-messagecard-support-in-workflows

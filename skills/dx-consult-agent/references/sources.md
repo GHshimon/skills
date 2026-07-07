@@ -58,7 +58,7 @@ skill-foundry ①リサーチ（Sonnet 5 サブエージェント4機、2026-07-
   https://airc.nist.gov/airmf-resources/airmf/5-sec-core/ / https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook
 - 🟢 EU AI Act — 禁止/ハイリスク/透明性義務/最小の4階層。禁止慣行は2025-02、GPAI規則は2025-08発効。
   https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
-- 🟡 附属書IIIハイリスクの適用期限延期（2026-08→2027-12、Digital Omnibus合意）— 施行状況は変動するため相談時に必ず最新確認。
+- 🟡 附属書IIIハイリスクの適用期限延期（2026-08-02→2027-12-02。附属書I組込製品は2028-08-02。Digital Omnibus は2026-06-29に理事会最終承認済み、正式発効は官報公告待ち）— 施行状況は変動するため相談時に必ず最新確認（2026-07-07 棚卸しで確認）。
   https://axis-intelligence.com/eu-ai-act-news/
 - 🟢 McKinsey「Lilli」公式声明 — 2026-03、自律攻撃エージェントが未認証エンドポイント＋SQLインジェクション経由で約2時間で読み書き権限を取得。
   https://www.mckinsey.com/about-us/media/statement-on-strengthening-safeguards-within-the-lilli-tool
