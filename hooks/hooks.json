@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "grep -q \"AI Harness Core\" \"$HOME/.claude/CLAUDE.md\" 2>/dev/null || cat \"${CLAUDE_PLUGIN_ROOT}/core/CLAUDE.md\"",
+            "timeout": 10,
+            "statusMessage": "常駐コアを確認中..."
+          }
+        ]
+      }
+    ]
+  }
+}

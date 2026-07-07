@@ -1,7 +1,7 @@
 {
   "name": "ai-company-skills",
-  "description": "AI Company の専門エージェント用 Agent Skills バンドル（全10スキル: skill-foundry / ai-agent-architect / dx-consult-agent / ui-design / ux-review / system-design / brand-design / code-review / notification-operator / note-narrative-editor）。skills/ 配下のスキルを一括で配布する。",
-  "version": "0.2.0",
+  "description": "AI Company の専門エージェント用 Agent Skills バンドル（全10スキル: skill-foundry / ai-agent-architect / dx-consult-agent / ui-design / ux-review / system-design / brand-design / code-review / notification-operator / note-narrative-editor）に加え、自動運用装置（skill-scorer エージェント / /skill-inventory コマンド / 常駐コア注入フック）を同梱する。",
+  "version": "0.3.0",
   "author": {
     "name": "GHshimon"
   }

@@ -75,6 +75,19 @@ claude.ai にしか本文がない自作スキル（`astro-web` / `vite-react-we
 - **2プロファイル設計:** スキルは Manager（判断系・Opus 実行）と Worker（手順系・Sonnet 5 サブエージェント実行）で書き分ける。テンプレートは [`skill-template.md`](skills/skill-foundry/references/skill-template.md) から選択。
 - **完成度評価:** スキルは [`eval-rubric.md`](skills/skill-foundry/references/eval-rubric.md) の10軸で Opus が採点し、「配備可」（16点以上・0点なし）のものだけを配備する。採点はクリエイト完了時・アップデート後・棚卸し時のチェックポイントで行う。
 
+## 自動運用（Autonomous Operation）
+
+無人でループを回すための装置。設計の経緯は Opus レビュアー2体との議論で確定（2026-07-07）。
+
+- **安全柵（多層防御）:** ①GitHub ブランチ保護（main への force push / 削除を機械的に拒否 — 最も実効性のある層）②[.claude/settings.json](.claude/settings.json) の permissions（秘密情報の Read deny ＋破壊的コマンドの ask。※プレフィックス方式は抜け穴があり得るため補助層と位置づける）③core/CLAUDE.md の行動原則（モデル判断層）
+- **独立採点:** [`agents/skill-scorer.md`](agents/skill-scorer.md)（Opus・読み取り専用）。独立性はコールドスタートの別セッションで担保する
+- **棚卸し:** [`commands/skill-inventory.md`](commands/skill-inventory.md)（/skill-inventory）。validate → 独立採点（バッチ・再開可能）→ 起動精度チェック → 失敗還元 → 鮮度確認 → 記録。月次のスケジュール実行（cloud routine）から呼ぶ
+- **失敗還元のデータフロー（一方向）:** [`FAILURE_LOG.md`](FAILURE_LOG.md)（生ログ）→ skill-foundry ③ → [`DEBT_INVENTORY.md`](DEBT_INVENTORY.md)（構造化記録）
+- **起動精度の回帰テスト:** [`tests/trigger-cases.md`](tests/trigger-cases.md)（正例20＋負例6）
+- **クラウドへのコア注入:** [`hooks/hooks.json`](hooks/hooks.json) の SessionStart フック。`~/.claude/CLAUDE.md` に常駐コアが既にある環境（PC）では注入をスキップして二重化を防ぐ
+
+**リリース手順（手動・低頻度のため自動化しない）:** ①スキル変更を main にマージ ②`plugin.json` の version を上げてプッシュ（クラウドは次回セッションから反映）③PC は `git pull && ./install.sh` ④claude.ai チャットは該当スキルの zip を再アップロード
+
 ## メンテナンス
 
 - スキルの棚卸し結果は [`DEBT_INVENTORY.md`](DEBT_INVENTORY.md) を参照。
