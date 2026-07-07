@@ -28,6 +28,13 @@ Claude 向けの Agent Skills を管理するリポジトリ。
 | [`ai-agent-architect`](skills/ai-agent-architect/SKILL.md) | AIエージェント設計・プロンプト/コンテキストエンジニアリング・運用・失敗回避の知識ベース。CLAUDE.md レビューやモデルの性能を引き出す設計に使う。 |
 | [`dx-consult-agent`](skills/dx-consult-agent/SKILL.md) | DX・AI導入コンサルタント知識ベース。業務のAI適用仕分け（Workflow/Agent/人間）、PoC→本番移行判断、変革マネジメント、AIガバナンス設計。skill-foundry パイプラインの第1号成果物。 |
 | [`skill-foundry`](skills/skill-foundry/SKILL.md) | 専門エージェント用スキルを鍛造するメタスキル。①リサーチ→②クリエイト→③アップデート→④分割の4段階パイプラインと Sonnet 5 サブエージェント委任規則。AI Company のエージェント編成は [`references/agent-roster.md`](skills/skill-foundry/references/agent-roster.md) 参照。 |
+| [`ui-design-agent`](skills/ui-design-agent/SKILL.md) | UI設計の判断基準集（Manager）。情報階層・レイアウト/グリッド・コンポーネント選定・ビジュアル調和を M3 / HIG / WCAG / ゲシュタルトで設計・監査。 |
+| [`ux-review-agent`](skills/ux-review-agent/SKILL.md) | ユーザビリティ監査（Manager）。Nielsen 10 / NN/g 深刻度5段階 / WCAG 2.2 AA / ダークパターン5分類による違反検出と優先順位付け。 |
+| [`system-design-agent`](skills/system-design-agent/SKILL.md) | アーキテクチャ判断基準集（Manager）。境界の切り方・スケール戦略・データ一貫性（CAP/PACELC）・ADR によるトレードオフ記録。 |
+| [`brand-design-agent`](skills/brand-design-agent/SKILL.md) | ブランド一貫性監査（Manager）。VI 4点監査・Voice/Tone 設計（NN/g 4次元）・ガイドライン策定・リブランド判断。 |
+| [`code-review-agent`](skills/code-review-agent/SKILL.md) | コードレビュー判断基準集（Manager）。Google eng-practices / Ousterhout / Conventional Comments に基づく欠陥検出・影響評価・severity 区分コメント。 |
+| [`notification-operator`](skills/notification-operator/SKILL.md) | 通知モジュール構築の手順書（Worker/Sonnet 5）。Google SRE の要否判定・集約設計・Teams(Workflows)/Slack 実装パターン。 |
+| [`note-narrative-editor`](skills/note-narrative-editor/SKILL.md) | 開発過程を note 記事用の自己内省ナラティブへ変換する手順書（Worker/Sonnet 5）。事実改変禁止・素材対応表付き。 |
 
 配備対象のスキルはすべて `skills/` 配下に置く。`_incoming/` は claude.ai からの回収待ち置き場（配備対象外）。
 
@@ -45,7 +52,8 @@ python3 skills/skill-foundry/scripts/validate_skill.py <skill-dir> [...]
 
 このリポジトリが単一の正（source of truth）。配備は3経路:
 
-1. **PC の Claude Code**: `git clone` して `./install.sh` を実行（`skills/*` を `~/.claude/skills/` にシンボリックリンク。以後 `git pull` だけで更新反映）。Windows は Git Bash で実行し、事前に開発者モードを有効にする（スクリプトがネイティブシンボリックリンクを強制。コピーになると pull 反映が壊れるため）
+1. **PC の Claude Code**: `git clone` して `./install.sh` を実行（`skills/*` を `~/.claude/skills/` にシンボリックリンク。以後 `git pull` だけで更新反映）。Windows は Git Bash で実行（開発者モード無効時はジャンクション/コピーに自動フォールバック）
+4. **Cursor**: `.cursorrules` は手書きせず `python3 scripts/generate_cursorrules.py [出力先]` で生成する（core/CLAUDE.md 全文＋スキル目次。本文はタスク時に読み込ませる方式）。core またはスキルを変更したら再生成する
 2. **claude.ai**: 各 `SKILL.md` を claude.ai > 設定 > 機能 > スキル にアップロード
 3. **プラグイン**: Claude Code で `/plugin marketplace add GHshimon/skills` → `ai-company-skills` をインストール（`.claude-plugin/` マニフェスト経由の1コマンド配布）
 
