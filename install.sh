@@ -64,4 +64,18 @@ for d in "$REPO_DIR"/skills/*/; do
   linked=$((linked + 1))
 done
 
+# 常駐コア（CLAUDE.md）の配備。本リポジトリ由来でない既存ファイルは上書きしない
+CORE_SRC="$REPO_DIR/core/CLAUDE.md"
+CORE_DST="${HOME}/.claude/CLAUDE.md"
+if [ -f "$CORE_SRC" ]; then
+  if [ -f "$CORE_DST" ] && [ ! -L "$CORE_DST" ] && ! head -1 "$CORE_DST" | grep -q "AI Harness Core"; then
+    echo "skip (手書きの CLAUDE.md を保護。core/CLAUDE.md と手動で統合してください): $CORE_DST"
+  elif ln -sfn "$CORE_SRC" "$CORE_DST" 2>/dev/null; then
+    echo "linked: $CORE_DST -> $CORE_SRC"
+  else
+    cp "$CORE_SRC" "$CORE_DST"
+    echo "copied: $CORE_DST（ファイルリンク不可のためコピー配備。git pull 後は install.sh を再実行）"
+  fi
+fi
+
 echo "完了: ${linked} スキルを配備。Claude Code を再起動するか /skills で読み込みを確認してください。"

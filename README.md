@@ -57,6 +57,10 @@ claude.ai にしか本文がない自作スキル（`astro-web` / `vite-react-we
 2. `_incoming/<name>/SKILL.md` の「回収待ち」見出し以下を本文で置き換える
 3. `git mv _incoming/<name> skills/<name>` で配備対象に昇格（Hook が自動検証）
 
+## 常駐コア（core/CLAUDE.md）
+
+常駐するルールは [`core/CLAUDE.md`](core/CLAUDE.md) の1枚のみ（約20行）。基本方針・品質ゲート・対話プロトコル・絶対制約だけを置き、能力の詳細はスキル側に分離する。`install.sh` が `~/.claude/CLAUDE.md` へ配備する（手書きの既存ファイルは保護）。
+
 ## 設計原則
 
 - **標準機能ファースト:** 仕組みを新設する前に「Claude Code 標準機能で可能か」を確認し、標準機構（skills / agents / hooks / permissions）で実現できるものを自作しない。対応表は [`model-routing.md`](skills/skill-foundry/references/model-routing.md)。
